@@ -110,19 +110,38 @@
 
 /* Full logo variant - visible at page load */
 .brand-logo--full {
-  width: 44px;
-  height: 44px;
+  width: auto;
+  height: 72px;
   border-radius: var(--r-md);
-  border: 2px solid rgba(23, 105, 194, 0.4);
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(11, 35, 70, 0.12);
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  transition: all var(--t-base);
 }
 
 .brand-logo--full img {
-  width: 100%;
+  width: auto;
   height: 100%;
-  object-fit: cover;
-  border-radius: calc(var(--r-md) - 2px);
+  object-fit: contain;
+  border-radius: var(--r-sm);
+}
+
+/* Logo plus petit au scroll */
+.navbar.is-scrolled .brand-logo--full {
+  height: 52px;
+}
+
+/* Footer logo - plus grand et bien visible */
+.footer .brand-logo--full {
+  height: 90px;
+  background: #ffffff;
+  border-radius: var(--r-lg);
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(11, 35, 70, 0.08);
+}
+
+.footer .brand-logo--full img {
+  border-radius: calc(var(--r-lg) - 8px);
 }
 
 .brand-name {
@@ -301,11 +320,6 @@
 .footer__brand .brand-name {
   margin-bottom: 0.375rem;
   color: #ffffff;
-}
-
-/* Footer logo styling */
-.footer .brand-logo--full {
-  background: #ffffff;
 }
 
 .footer__desc {
