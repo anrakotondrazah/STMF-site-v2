@@ -1,0 +1,228 @@
+/* ============================================================
+   STMF — GESTION LOCATIVE | global.css
+   Design tokens, reset, typography
+   © 2026 STMF — Architecture: Andry / Dev
+   ============================================================ */
+
+/* ─── Google Fonts ─── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ─── Design Tokens ─── */
+:root {
+  /* Palette STMF - Charte graphique */
+  --c-bg:          #ffffff;
+  --c-bg-2:        #EEF1F4;
+  --c-bg-3:        #f8f9fa;
+  --c-primary:     #0B2346;
+  --c-primary-light: #1769C2;
+  --c-primary-dim: rgba(11, 35, 70, 0.14);
+  --c-primary-glow: rgba(23, 105, 194, 0.28);
+  --c-white:       #ffffff;
+  --c-text:        rgba(11, 35, 70, 0.92);
+  --c-text-sec:    rgba(11, 35, 70, 0.70);
+  --c-text-muted:  #7B858F;
+
+  /* Legacy aliases for compatibility */
+  --c-red:         #0B2346;
+  --c-red-light:   #1769C2;
+  --c-red-dim:     rgba(11, 35, 70, 0.14);
+  --c-red-glow:    rgba(23, 105, 194, 0.28);
+
+  /* Glass system - Light mode */
+  --g-bg:          rgba(11, 35, 70, 0.04);
+  --g-bg-hover:    rgba(11, 35, 70, 0.08);
+  --g-bg-strong:   rgba(11, 35, 70, 0.10);
+  --g-border:      rgba(11, 35, 70, 0.10);
+  --g-border-h:    rgba(11, 35, 70, 0.18);
+  --g-border-red:  rgba(23, 105, 194, 0.40);
+  --g-blur:        blur(28px) saturate(160%);
+  --g-blur-sm:     blur(16px) saturate(140%);
+  --g-shadow:      0 8px 32px rgba(11, 35, 70, 0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+  --g-shadow-h:    0 20px 56px rgba(11, 35, 70, 0.18), inset 0 1px 0 rgba(255,255,255,0.95);
+  --g-shadow-red:  0 0 40px rgba(23, 105, 194, 0.15);
+
+  /* Typography */
+  --ff-display:    'Space Grotesk', -apple-system, sans-serif;
+  --ff-body:       'Inter', -apple-system, sans-serif;
+
+  /* Scale */
+  --ts-xs:   0.75rem;   /* 12px */
+  --ts-sm:   0.875rem;  /* 14px */
+  --ts-base: 1rem;      /* 16px */
+  --ts-lg:   1.125rem;  /* 18px */
+  --ts-xl:   1.25rem;   /* 20px */
+  --ts-2xl:  1.5rem;    /* 24px */
+  --ts-3xl:  1.875rem;  /* 30px */
+  --ts-4xl:  clamp(2rem, 3.5vw, 2.5rem);
+  --ts-5xl:  clamp(2.5rem, 4.5vw, 3.5rem);
+  --ts-hero: clamp(2.75rem, 5.5vw, 4.5rem);
+
+  /* Radius */
+  --r-sm:   8px;
+  --r-md:   14px;
+  --r-lg:   22px;
+  --r-xl:   32px;
+  --r-pill: 9999px;
+
+  /* Spacing */
+  --sp-section: clamp(5rem, 9vw, 8rem);
+  --sp-nav:     88px; /* navbar height compensation */
+
+  /* Transitions */
+  --t-fast:   0.18s ease;
+  --t-base:   0.30s cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow:   0.55s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Container */
+  --max-w: 1200px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ─── Reset ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--ts-base);
+  line-height: 1.65;
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Animated background ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 30%,  rgba(23, 105, 194, 0.06)  0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 85% 70%,  rgba(11, 35, 70, 0.04)   0%, transparent 60%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(238, 241, 244, 0.8) 0%, transparent 70%);
+}
+
+/* ─── Global layout wrapper ─── */
+.site-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--c-primary);
+}
+
+h1 { font-size: var(--ts-hero); }
+h2 { font-size: var(--ts-5xl); }
+h3 { font-size: var(--ts-3xl); }
+h4 { font-size: var(--ts-2xl); }
+h5 { font-size: var(--ts-xl);  }
+h6 { font-size: var(--ts-lg);  }
+
+p {
+  color: var(--c-text-sec);
+  line-height: 1.70;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul, ol { list-style: none; }
+
+button, input, textarea, select {
+  font-family: var(--ff-body);
+  font-size: var(--ts-base);
+}
+
+button { cursor: pointer; border: none; background: none; }
+
+/* ─── Utilities ─── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Text utilities */
+.text-red     { color: var(--c-red); }
+.text-muted   { color: var(--c-text-muted); }
+.text-center  { text-align: center; }
+.font-display { font-family: var(--ff-display); }
+
+/* SVG filter for liquid glass distortion (progressive enhancement) */
+.svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ─── Focus / Accessibility ─── */
+:focus-visible {
+  outline: 2px solid var(--c-primary-light);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--c-primary-dim);
+  color: var(--c-primary);
+}
+
+/* ─── Scrollbar (Webkit) ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: rgba(23, 105, 194, 0.4); border-radius: var(--r-pill); }
+::-webkit-scrollbar-thumb:hover { background: var(--c-primary-light); }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

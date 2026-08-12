@@ -1,0 +1,144 @@
+/* ============================================================
+   STMF — GESTION LOCATIVE | animations.css
+   Keyframes, scroll-reveal, entrance effects
+   ============================================================ */
+
+/* ─── Keyframes ─── */
+
+@keyframes orb-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.06); }
+  100% { transform: translate(-20px, 25px) scale(0.96); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+@keyframes scroll-wheel {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hero-line-draw {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(212,0,9,0.20); }
+  50%       { box-shadow: 0 0 40px rgba(212,0,9,0.38); }
+}
+
+@keyframes timeline-grow {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+/* ─── Scroll-Reveal System ─── */
+/* Elements with [data-reveal] start hidden and animate in when visible */
+
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+[data-reveal="up"]      { transform: translateY(32px); }
+[data-reveal="left"]    { transform: translateX(-32px); }
+[data-reveal="right"]   { transform: translateX(32px); }
+[data-reveal="scale"]   { transform: scale(0.94); }
+[data-reveal="fade"]    { transform: none; }
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity  0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger delays */
+[data-reveal-delay="100"].is-visible { transition-delay: 100ms; }
+[data-reveal-delay="150"].is-visible { transition-delay: 150ms; }
+[data-reveal-delay="200"].is-visible { transition-delay: 200ms; }
+[data-reveal-delay="300"].is-visible { transition-delay: 300ms; }
+[data-reveal-delay="400"].is-visible { transition-delay: 400ms; }
+[data-reveal-delay="500"].is-visible { transition-delay: 500ms; }
+[data-reveal-delay="600"].is-visible { transition-delay: 600ms; }
+
+/* ─── Hero entrance (immediate, no scroll) ─── */
+
+.hero__eyebrow  { animation: fade-in-up   0.55s 0.10s both cubic-bezier(0.4,0,0.2,1); }
+.hero__title    { animation: fade-in-up   0.65s 0.20s both cubic-bezier(0.4,0,0.2,1); }
+.hero__subtitle { animation: fade-in-up   0.65s 0.35s both cubic-bezier(0.4,0,0.2,1); }
+.hero__actions  { animation: fade-in-up   0.65s 0.48s both cubic-bezier(0.4,0,0.2,1); }
+.hero__values   { animation: fade-in-up   0.65s 0.60s both cubic-bezier(0.4,0,0.2,1); }
+.hero__media    { animation: fade-in-scale 0.75s 0.30s both cubic-bezier(0.4,0,0.2,1); }
+.hero__scroll   { animation: fade-in-up   0.65s 0.80s both cubic-bezier(0.4,0,0.2,1); }
+
+/* ─── Floating image animation ─── */
+.float-anim { animation: float-y 5s ease-in-out infinite; }
+
+/* ─── Glow pulse (CTA buttons with red glow) ─── */
+.glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* ─── Timeline line grow ─── */
+.timeline-line-inner { animation: timeline-grow 1.2s var(--t-slow) both; }
+
+/* ─── Page transition ─── */
+.page {
+  animation: fade-in-scale 0.4s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* ─── Reduced motion override ─── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__eyebrow,
+  .hero__title,
+  .hero__subtitle,
+  .hero__actions,
+  .hero__values,
+  .hero__media,
+  .hero__scroll,
+  .float-anim,
+  .glow-pulse,
+  .page {
+    animation: none;
+  }
+}

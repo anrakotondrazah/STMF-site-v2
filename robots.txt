@@ -1,0 +1,21 @@
+# robots.txt — STMF Gestion Locative
+# https://stmf-gestion-locative.com
+
+# Autoriser tous les robots à indexer le site
+User-agent: *
+Allow: /
+
+# Bloquer les ressources non pertinentes pour le SEO
+Disallow: /assets/favicon/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://stmf-gestion-locative.com/sitemap.xml
+
+# Règles spécifiques Googlebot (accès complet aux images)
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+
+User-agent: Googlebot-Image
+Allow: /assets/
