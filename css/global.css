@@ -66,7 +66,7 @@
 
   /* Spacing */
   --sp-section: clamp(5rem, 9vw, 8rem);
-  --sp-nav:     88px; /* navbar height compensation */
+  --sp-nav:     160px; /* navbar height compensation - logo plus grand */
 
   /* Transitions */
   --t-fast:   0.18s ease;
