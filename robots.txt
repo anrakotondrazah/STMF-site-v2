@@ -5,17 +5,16 @@
 User-agent: *
 Allow: /
 
-# Bloquer les ressources non pertinentes pour le SEO
-Disallow: /assets/favicon/
-Disallow: /*.json$
+# Autoriser explicitement les favicons (requis pour Google Search)
+Allow: /favicon.ico
+Allow: /assets/favicon/
 
 # Sitemap
 Sitemap: https://stmf-gestion-locative.com/sitemap.xml
 
-# Règles spécifiques Googlebot (accès complet aux images)
+# Googlebot - accès complet
 User-agent: Googlebot
 Allow: /
-Allow: /assets/
 
 User-agent: Googlebot-Image
-Allow: /assets/
+Allow: /
