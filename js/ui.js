@@ -138,3 +138,84 @@ const UI = {
   const timeline = document.querySelector('.timeline');
   if (timeline) observer.observe(timeline);
 })();
+
+/* ────────────────────────────────────────────
+   CAROUSEL / SLIDER — Hero images
+──────────────────────────────────────────── */
+(function initCarousel() {
+  const carousel = document.querySelector('.hero__carousel');
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const dots = carousel.querySelectorAll('.carousel-dot');
+  const prevBtn = carousel.querySelector('.carousel-prev');
+  const nextBtn = carousel.querySelector('.carousel-next');
+
+  if (slides.length === 0) return;
+
+  let currentSlide = 0;
+  let autoplayInterval = null;
+
+  /**
+   * Affiche un slide spécifique
+   */
+  const showSlide = (index) => {
+    // Boucle l'index
+    currentSlide = (index + slides.length) % slides.length;
+
+    // Met à jour l'opacité des slides
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentSlide);
+    });
+
+    // Met à jour les dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  };
+
+  /**
+   * Slide suivant
+   */
+  const nextSlide = () => {
+    showSlide(currentSlide + 1);
+    resetAutoplay();
+  };
+
+  /**
+   * Slide précédent
+   */
+  const prevSlide = () => {
+    showSlide(currentSlide - 1);
+    resetAutoplay();
+  };
+
+  /**
+   * Auto-rotation (optionnel — à décommenter si tu le veux)
+   */
+  const startAutoplay = () => {
+    autoplayInterval = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000); // Change toutes les 5 secondes
+  };
+
+  const resetAutoplay = () => {
+    clearInterval(autoplayInterval);
+    startAutoplay();
+  };
+
+  // Event listeners
+  prevBtn?.addEventListener('click', prevSlide);
+  nextBtn?.addEventListener('click', nextSlide);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+      resetAutoplay();
+    });
+  });
+
+  // Initialiser
+  showSlide(0);
+  // startAutoplay(); // Décommenter pour activer l'auto-rotation
+})();
